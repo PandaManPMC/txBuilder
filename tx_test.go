@@ -3,15 +3,15 @@ package txBuilder
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/PandaManPMC/txBuilder/dogeNetParams"
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/btcsuite/btcd/btcec/v2/ecdsa"
 	"github.com/btcsuite/btcd/btcutil"
 	"testing"
-	"txBuilder/dogeNetParams"
 )
 
 func TestSignTxDogeLegacy(t *testing.T) {
-	// transfer btc
+	// transfer doge
 	txBuild := NewTxBuild(1, &dogeNetParams.DogeMainNetParams)
 	txBuild.AddInput("d912375ffefd88afd1e8cdf60eab02be7ca3847c18fec555ba740919ac99aca4", 0,
 		"76a914b02720b0c294de4a4cb5fc7cbf24bdd916e0f77388ac", "", "", 100000000)
@@ -53,7 +53,7 @@ func TestSignTxDogeLegacy(t *testing.T) {
 }
 
 func TestSignTxDogeLegacyCompressed(t *testing.T) {
-	// transfer btc
+	// transfer doge
 	txBuild := NewTxBuild(1, &dogeNetParams.DogeMainNetParams)
 	txBuild.AddInput("db7d96072a952774246be2fb18c1b0d5fd028ef1414807fa9f5a2a1ae35e9bdb", 0,
 		"76a914cd60d88a6a618035555d869ca2ddf605b01522c588ac", "", "", 100000000)

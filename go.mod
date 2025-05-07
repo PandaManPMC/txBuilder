@@ -1,4 +1,4 @@
-module txBuilder
+module github.com/PandaManPMC/txBuilder
 
 go 1.23.0
 
