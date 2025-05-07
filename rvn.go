@@ -53,7 +53,7 @@ func RVNSignTxLegacyCompressed(txBuild *TransactionBuilder, privateBytes []byte)
 	for inx, v := range txBuild.inputs {
 		prevPkScript, _ := hex.DecodeString(v.privateKeyHex)
 		sigScript, err := txscript.SignTxOutput(&chaincfg.MainNetParams,
-			redeemTx, 0, prevPkScript, txscript.SigHashAll,
+			redeemTx, inx, prevPkScript, txscript.SigHashAll,
 			txscript.KeyClosure(lookupKey), nil, nil)
 		if nil != err {
 			return "", "", err
@@ -61,7 +61,7 @@ func RVNSignTxLegacyCompressed(txBuild *TransactionBuilder, privateBytes []byte)
 		redeemTx.TxIn[inx].SignatureScript = sigScript
 
 		// 可选：验证签名是否正确
-		vm, err := txscript.NewEngine(prevPkScript, redeemTx, 0, txscript.StandardVerifyFlags, nil, nil, v.amount)
+		vm, err := txscript.NewEngine(prevPkScript, redeemTx, inx, txscript.StandardVerifyFlags, nil, nil, v.amount)
 		if nil != err {
 			return "", "", err
 		}

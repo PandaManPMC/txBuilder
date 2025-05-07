@@ -18,7 +18,7 @@ func TestRVNSignTxLegacyCompressedPKStr(t *testing.T) {
 	pk := "7e53ae5d15dd6af9601fb0cbc6ce0ecda62fa8e56a4620b402a8a1061e648b87"
 
 	tx := NewTxBuild(wire.TxVersion, &rvnNetParams.MainNetParams)
-	tx.AddInput("7ce072ae8c059a6431210a11aeb2d2da08141d9d7c1fed5389a5935a398c6f9c", 0,
+	tx.AddInput("760544b0faf975c4c0a2d908f5ff6109e9dd2b42dfe3f9704b265760937b32bc", 0,
 		"76a914b5c2e59a0ce4f5c8090fc3a5c835f2bea331e2a388ac", "", "", 60000000)
 
 	tx.AddOutput("RPVW6ifbuCr4BQqAAjZ4APaT3sqL61tU8a", 59000000)
