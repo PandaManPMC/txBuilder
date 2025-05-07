@@ -6,11 +6,9 @@ package ltcNetParams
 
 import (
 	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"math/big"
 	"time"
-
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/wire"
 )
 
 // These variables are the chain proof-of-work limit parameters for each default
@@ -72,7 +70,7 @@ const (
 // MainNetParams defines the network parameters for the main Litecoin network.
 var MainNetParams = chaincfg.Params{
 	Name:        "mainnet",
-	Net:         wire.MainNet,
+	Net:         0xdbb6c0fb,
 	DefaultPort: "9333",
 	DNSSeeds: []chaincfg.DNSSeed{
 		{"seed-a.litecoin.loshan.co.uk", true},
@@ -82,14 +80,15 @@ var MainNetParams = chaincfg.Params{
 	},
 
 	// Chain parameters
-	GenesisBlock:             &genesisBlock,
-	GenesisHash:              &genesisHash,
-	PowLimit:                 mainPowLimit,
-	PowLimitBits:             504365055,
-	BIP0034Height:            710000,
-	BIP0065Height:            918684,
-	BIP0066Height:            811879,
-	CoinbaseMaturity:         100,
+	GenesisBlock:     &genesisBlock,
+	GenesisHash:      &genesisHash,
+	PowLimit:         mainPowLimit,
+	PowLimitBits:     0x1e0ffff0,
+	BIP0034Height:    710000,
+	BIP0065Height:    918684,
+	BIP0066Height:    811879,
+	CoinbaseMaturity: 100,
+	//MwebPegoutMaturity:       6,
 	SubsidyReductionInterval: 840000,
 	TargetTimespan:           (time.Hour * 24 * 3) + (time.Hour * 12), // 3.5 days
 	TargetTimePerBlock:       (time.Minute * 2) + (time.Second * 30),  // 2.5 minutes
@@ -164,17 +163,24 @@ var MainNetParams = chaincfg.Params{
 				time.Unix(1510704000, 0), // November 15, 2017 UTC.
 			),
 		},
-		DeploymentTaproot: {
-			BitNumber: 2,
-			DeploymentStarter: chaincfg.NewMedianTimeDeploymentStarter(
-				time.Unix(1619222400, 0), // April 24th, 2021 UTC.
-			),
-			DeploymentEnder: chaincfg.NewMedianTimeDeploymentEnder(
-				time.Unix(1628640000, 0), // August 11th, 2021 UTC.
-			),
-			CustomActivationThreshold: 1815, // 90%
-			MinActivationHeight:       709_632,
-		},
+		//DeploymentTaproot: {
+		//	BitNumber: 2,
+		//	DeploymentStarter: NewBlockHeightDeploymentStarter(
+		//		2161152, // End November 2021
+		//	),
+		//	DeploymentEnder: NewBlockHeightDeploymentEnder(
+		//		2370816, // 364 days later
+		//	),
+		//},
+		//DeploymentMweb: {
+		//	BitNumber: 4,
+		//	DeploymentStarter: NewBlockHeightDeploymentStarter(
+		//		2217600, // End Feb 2022
+		//	),
+		//	DeploymentEnder: NewBlockHeightDeploymentEnder(
+		//		2427264, // 364 days later
+		//	),
+		//},
 	},
 
 	// Mempool parameters
@@ -182,14 +188,17 @@ var MainNetParams = chaincfg.Params{
 
 	// Human-readable part for Bech32 encoded segwit addresses, as defined in
 	// BIP 173.
-	Bech32HRPSegwit: "ltcNetParams", // always ltcNetParams for main net
+	Bech32HRPSegwit: "ltc", // always ltc for main net
+
+	// Human-readable part for Bech32 encoded mweb addresses.
+	//Bech32HRPMweb: "ltcmweb", // always ltcmweb for main net
 
 	// Address encoding magics
-	PubKeyHashAddrID:        0x30, // starts with L
-	ScriptHashAddrID:        0x32, // starts with M
-	PrivateKeyID:            0xB0, // starts with 6 (uncompressed) or T (compressed)
-	WitnessPubKeyHashAddrID: 0x06, // starts with p2
-	WitnessScriptHashAddrID: 0x0A, // starts with 7Xh
+	PubKeyHashAddrID: 0x30, // starts with L
+	ScriptHashAddrID: 0x32, // starts with M
+	PrivateKeyID:     0xB0, // starts with 6 (uncompressed) or T (compressed)
+	//WitnessPubKeyHashAddrID: 0x06, // starts with p2
+	//WitnessScriptHashAddrID: 0x0A, // starts with 7Xh
 
 	// BIP32 hierarchical deterministic extended key magics
 	HDPrivateKeyID: [4]byte{0x04, 0x88, 0xad, 0xe4}, // starts with xprv

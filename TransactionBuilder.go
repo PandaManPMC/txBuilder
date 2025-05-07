@@ -271,7 +271,6 @@ func (build *TransactionBuilder) UnSignedTx(pubKeyMap map[int]string) (string, m
 	if len(build.inputs) == 0 || len(build.outputs) == 0 {
 		return "", nil, fmt.Errorf("input or output miss")
 	}
-
 	tx := build.tx
 	var scriptArray [][]byte
 	for i := 0; i < len(build.inputs); i++ {
@@ -330,7 +329,11 @@ func (build *TransactionBuilder) UnSignedTx(pubKeyMap map[int]string) (string, m
 			return "", nil, err
 		}
 		tx.TxIn[i].SignatureScript = scriptBuilder
+
+		//tx.TxIn[i].Sequence = 4294967294
+		//tx.TxIn[i].Sequence = 0xffffffff
 	}
+	//tx.LockTime = uint32(time.Now().Unix()) - 60
 	buf := bytes.NewBuffer(make([]byte, 0, tx.SerializeSize()))
 	err := tx.Serialize(buf)
 	if err != nil {

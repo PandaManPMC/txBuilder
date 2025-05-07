@@ -27,8 +27,8 @@ const (
 	MainNet wire.BitcoinNet = 0xc0c0c0c0
 )
 
-// DogeMainNetParams defines the network parameters for the main DogeCoin network.
-var DogeMainNetParams = chaincfg.Params{
+// MainNetParams defines the network parameters for the main DogeCoin network.
+var MainNetParams = chaincfg.Params{
 	Name:        "mainnet",
 	Net:         MainNet,
 	DefaultPort: "22556",
