@@ -8,8 +8,8 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/PandaManPMC/txBuilder/chaincfg/chainhash"
 	"github.com/PandaManPMC/txBuilder/ravencoin/btcec"
+	"github.com/PandaManPMC/txBuilder/ravencoin/chaincfg/chainhash"
 )
 
 // This example demonstrates signing a message with a secp256k1 private key that
