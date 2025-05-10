@@ -3,7 +3,6 @@ package xno
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/PandaManPMC/txBuilder/xno/util"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -32,7 +31,7 @@ func TestBanMnemonic(t *testing.T) {
 
 		pubKey, _, err := DeriveKeypair(key)
 		require.Nil(t, err)
-		address, err := util.PubKeyToBanAddress(pubKey)
+		address, err := PubKeyToBanAddress(pubKey)
 		require.Nil(t, err)
 		t.Log(fmt.Sprintf("%d %s %s %s", i, address, keyString, hex.EncodeToString(pubKey)))
 	}

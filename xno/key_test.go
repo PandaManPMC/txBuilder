@@ -3,7 +3,6 @@ package xno
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/PandaManPMC/txBuilder/xno/util"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -36,7 +35,7 @@ func TestMnemonic(t *testing.T) {
 
 		pubKey, _, err := DeriveKeypair(key)
 		require.Nil(t, err)
-		address, err := util.PubKeyToXNOAddress(pubKey)
+		address, err := PubKeyToXNOAddress(pubKey)
 		require.Nil(t, err)
 		t.Log(fmt.Sprintf("%d %s %s %s", i, address, keyString, hex.EncodeToString(pubKey)))
 	}
@@ -60,7 +59,7 @@ func TestBip39(t *testing.T) {
 	pubKey, _, err := DeriveKeypair(key)
 	t.Log(string(pubKey))
 	require.Nil(t, err)
-	address, err := util.PubKeyToXNOAddress(pubKey)
+	address, err := PubKeyToXNOAddress(pubKey)
 	t.Log(address)
 	require.Nil(t, err)
 	//assert.Equal(t, "nano_1pu7p5n3ghq1i1p4rhmek41f5add1uh34xpb94nkbxe8g4a6x1p69emk8y1d", address)

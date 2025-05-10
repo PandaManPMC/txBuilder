@@ -3,7 +3,6 @@ package xno
 import (
 	"encoding/hex"
 	"encoding/json"
-	"github.com/PandaManPMC/txBuilder/xno/util"
 	"math/big"
 	"strings"
 	"testing"
@@ -27,7 +26,7 @@ func TestSendBlock(t *testing.T) {
 	if nil != err {
 		t.Fatal(err)
 	}
-	link, err := util.AddressToPubkey("nano_1epyg63khb56wybn1jt8z1du1phtufchagc36utnh896copn8fncirmfe41f")
+	link, err := AddressToPubkey("nano_1epyg63khb56wybn1jt8z1du1phtufchagc36utnh896copn8fncirmfe41f")
 	if nil != err {
 		t.Fatal(err)
 	}
@@ -129,7 +128,7 @@ func TestOpenBlock(t *testing.T) {
 		Ctx:        nil,
 	}
 
-	pub, err := util.AddressToPubkey("nano_1epyg63khb56wybn1jt8z1du1phtufchagc36utnh896copn8fncirmfe41f")
+	pub, err := AddressToPubkey("nano_1epyg63khb56wybn1jt8z1du1phtufchagc36utnh896copn8fncirmfe41f")
 	if nil != err {
 		t.Fatal(err)
 	}
@@ -201,7 +200,7 @@ func TestSendBlock2(t *testing.T) {
 	if nil != err {
 		t.Fatal(err)
 	}
-	link, err := util.AddressToPubkey("nano_13spmfpd5mz4dwd13uhhgw5im9hkhb8w3cpxmjktcho48cb7i6ahcri15q7t")
+	link, err := AddressToPubkey("nano_13spmfpd5mz4dwd13uhhgw5im9hkhb8w3cpxmjktcho48cb7i6ahcri15q7t")
 	if nil != err {
 		t.Fatal(err)
 	}

@@ -1,4 +1,4 @@
-package util
+package xno
 
 import (
 	"encoding/base32"

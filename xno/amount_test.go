@@ -1,7 +1,7 @@
-package util_test
+package xno_test
 
 import (
-	"github.com/PandaManPMC/txBuilder/xno/util"
+	"github.com/PandaManPMC/txBuilder/xno"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,14 +15,14 @@ func TestNanoAmount(t *testing.T) {
 		"0.100000",
 		"0.000001",
 	} {
-		n, err := util.NanoAmountFromString(s)
+		n, err := xno.NanoAmountFromString(s)
 		require.Nil(t, err)
 		assert.Equal(t, s, n.String())
 	}
 	for _, s := range []string{
 		"0.0000000000000000000000000000001",
 	} {
-		_, err := util.NanoAmountFromString(s)
+		_, err := xno.NanoAmountFromString(s)
 		require.NotNil(t, err)
 	}
 }

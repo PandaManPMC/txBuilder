@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/PandaManPMC/txBuilder/xno/ed25519"
-	"github.com/PandaManPMC/txBuilder/xno/util"
 	"math/big"
 	"strings"
 
@@ -97,13 +96,13 @@ func (b *Block) Hash() (hash BlockHash, err error) {
 	}
 	h.Write(make([]byte, 31))
 	h.Write([]byte{6})
-	pubKey, err := util.AddressToPubkey(b.Account)
+	pubKey, err := AddressToPubkey(b.Account)
 	if err != nil {
 		return
 	}
 	h.Write(pubKey)
 	h.Write(b.Previous)
-	pubKey, err = util.AddressToPubkey(b.Representative)
+	pubKey, err = AddressToPubkey(b.Representative)
 	if err != nil {
 		return
 	}

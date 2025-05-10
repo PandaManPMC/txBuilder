@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"github.com/PandaManPMC/txBuilder/xno/bip32"
 	"github.com/PandaManPMC/txBuilder/xno/ed25519"
-	"github.com/PandaManPMC/txBuilder/xno/util"
 	"github.com/tyler-smith/go-bip39"
 	"golang.org/x/crypto/blake2b"
 )
@@ -72,13 +71,13 @@ func ImportWallet(mnemonic, netWork string, offsetPath int) (pk, address string,
 	pubKey, _, err := DeriveKeypair(key)
 
 	if Nano == netWork {
-		address, err = util.PubKeyToXNOAddress(pubKey)
+		address, err = PubKeyToXNOAddress(pubKey)
 		if nil != err {
 			return "", "", err
 		}
 		return keyString, address, nil
 	} else if Banano == netWork {
-		address, err = util.PubKeyToBanAddress(pubKey)
+		address, err = PubKeyToBanAddress(pubKey)
 		if nil != err {
 			return "", "", err
 		}
@@ -97,7 +96,7 @@ func PrivateKeyToXNOAddressStr(privateKey string) (string, error) {
 	if nil != err {
 		return "", err
 	}
-	address, err := util.PubKeyToXNOAddress(pubKey)
+	address, err := PubKeyToXNOAddress(pubKey)
 	if nil != err {
 		return "", err
 	}
@@ -113,7 +112,7 @@ func PrivateKeyToBanAddressStr(privateKey string) (string, error) {
 	if nil != err {
 		return "", err
 	}
-	address, err := util.PubKeyToBanAddress(pubKey)
+	address, err := PubKeyToBanAddress(pubKey)
 	if nil != err {
 		return "", err
 	}
