@@ -12,7 +12,7 @@ func AddressToPubkey(address string) (pubkey []byte, err error) {
 	err = errors.New("invalid address")
 	switch len(address) {
 	case 64:
-		if address[:4] != "xrb_" {
+		if address[:4] != "xrb_" && address[:4] != "ban_" {
 			return
 		}
 		address = address[4:]
