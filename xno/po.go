@@ -1,4 +1,4 @@
-package rpc
+package xno
 
 type WorkGenerateRsp struct {
 	Difficulty string `json:"difficulty"`

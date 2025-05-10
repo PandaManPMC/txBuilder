@@ -1,4 +1,4 @@
-package rpc
+package xno
 
 import (
 	"encoding/hex"
