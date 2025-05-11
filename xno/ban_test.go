@@ -46,4 +46,12 @@ func TestImportWallet(t *testing.T) {
 		}
 		t.Log(fmt.Sprintf("%d %s %s", i, address, pk))
 	}
+
+	for i := 0; i < 5; i++ {
+		pk, address, err := ImportWallet(mnemonic, Nano, i)
+		if nil != err {
+			t.Fatal(err)
+		}
+		t.Log(fmt.Sprintf("%d %s %s", i, address, pk))
+	}
 }

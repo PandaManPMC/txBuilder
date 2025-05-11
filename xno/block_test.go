@@ -384,6 +384,7 @@ func TestBlockInfo(t *testing.T) {
 		AuthHeader: "",
 		Ctx:        nil,
 	}
+	//{"block_account":"nano_1nk7kf11j4uhwqmry818xxhxqq9ickwrmm3xtwpzzp3ybjz75yuoeuc7chz8","amount":"1000000000000000000000000000000","balance":"27838000000000000000000000000000","height":"11","local_timestamp":"1746920209","successor":"0000000000000000000000000000000000000000000000000000000000000000","confirmed":"true","contents":{"type":"state","account":"nano_1nk7kf11j4uhwqmry818xxhxqq9ickwrmm3xtwpzzp3ybjz75yuoeuc7chz8","previous":"5B993C3A2930FE22304DAE1C25193FCFB75407DC1E83D3E8E20394158BDA5D49","representative":"nano_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd","balance":"27838000000000000000000000000000","link":"A0181C70B2E98E7FED72807A8E37575AFFA5D755048C07E8F9F8DA635D43AECC","link_as_account":"nano_3a1r5jrd7teghzpq715tjruogpqznqdoc36e1znhmy8tefgn9dpe1sy73mcs","signature":"7E252B0F380FF7AC9F198700B3A063415DF146245640296BBE2751D576202D4E4680954146BF75A8EDF8CABA89BE49A466C754444713C8412F963D72BF801E0D","work":"41cb28bf0dd71499"},"subtype":"send","requestsLimit":"5000","requestsRemaining":"4989","requestLimitReset":"Sun May 11 2025 12:13:34 GMT+0200 (Central European Summer Time)"}
 	bal, err := client.BlockInfo("846E653DBEEDEF4F0DB145F55B1B149156EC047DEE208E3953780CCCAFAD9143")
 	if nil != err {
 		t.Fatal(err)

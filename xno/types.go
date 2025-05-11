@@ -57,17 +57,16 @@ type AccountInfo struct {
 	Pending                    *RawAmount `json:"pending"`
 }
 
-// Block corresponds to the JSON representation of a block.
 type Block struct {
-	Type           string     `json:"type"`           // 区块类型，固定为 "state"
-	Account        string     `json:"account"`        // 发送方的 Nano 地址
-	Previous       BlockHash  `json:"previous"`       // 前一个区块的哈希
-	Representative string     `json:"representative"` // 当前账户的代表地址
-	Balance        *RawAmount `json:"balance"`        // 发送后的账户余额（单位：raw）
-	Link           BlockHash  `json:"link"`           // 接收方的 Nano 地址
-	LinkAsAccount  string     `json:"link_as_account"`
-	Signature      HexData    `json:"signature"` // 签名
-	Work           HexData    `json:"work"`      // 工作量证明值
+	Type           string     `json:"type"`            // 区块类型，固定为 "state"
+	Account        string     `json:"account"`         // 当前账户地址（发送者或接收者）
+	Previous       BlockHash  `json:"previous"`        // 前一个区块的哈希，首次接收时为全 0
+	Representative string     `json:"representative"`  // 当前账户的代表地址
+	Balance        *RawAmount `json:"balance"`         // 当前账户的余额（单位：raw）
+	Link           BlockHash  `json:"link"`            // send 类型：为接收方的地址的公钥（32 字节） ,receive/open/epoch 类型：为待接收的 send 块的哈希
+	LinkAsAccount  string     `json:"link_as_account"` // 可选字段，link 的账户形式（非必要）
+	Signature      HexData    `json:"signature"`       // 区块签名
+	Work           HexData    `json:"work"`            // 工作量证明值
 }
 
 func (b *Block) SignBlockStrPK(privateKey string) error {
