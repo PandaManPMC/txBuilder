@@ -165,6 +165,23 @@ func (c *Client) AccountsPending(address string) (*AccountsPendingRsp, error) {
 	return rsp, nil
 }
 
+func (c *Client) BlockInfo(hash string) (*BlockInfoRsp, error) {
+	params := make(map[string]any)
+	params["action"] = "block_info"
+	params["json_block"] = "true"
+	params["hash"] = hash
+	res, err := c.Send(params)
+	if nil != err {
+		return nil, err
+	}
+	println(string(res))
+	rsp := new(BlockInfoRsp)
+	if e := json.Unmarshal(res, rsp); nil != e {
+		return nil, e
+	}
+	return rsp, nil
+}
+
 func (c *Client) ProcessSend(block Block) (*ProcessRsp, error) {
 	params := make(map[string]any)
 	params["action"] = "process"

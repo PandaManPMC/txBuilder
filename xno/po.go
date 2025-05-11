@@ -48,3 +48,25 @@ type AccountsPendingRsp struct {
 	RequestsRemaining string              `json:"requestsRemaining"`
 	RequestLimitReset string              `json:"requestLimitReset"`
 }
+
+type BlockInfoRsp struct {
+	BlockAccount   string `json:"block_account"`   // 该区块所属账户地址
+	Amount         string `json:"amount"`          // 本区块变动的金额（单位为 raw）
+	Balance        string `json:"balance"`         // 本区块后的账户余额（单位为 raw）
+	Height         string `json:"height"`          // 区块在账户链中的高度（从 1 开始）
+	LocalTimestamp string `json:"local_timestamp"` // 区块生成时的本地时间戳（可能为 "0"）
+	Successor      string `json:"successor"`       // 紧随其后的区块哈希（若为最新区块则为空）
+	Confirmed      string `json:"confirmed"`       // 区块是否已被确认（"true"/"false"）
+	Contents       struct {
+		Type           string `json:"type"`            // 区块类型，通常为 "state"
+		Account        string `json:"account"`         // 账户地址
+		Previous       string `json:"previous"`        // 上一个区块的哈希（open 区块时为空）
+		Representative string `json:"representative"`  // 当前账户代表地址
+		Balance        string `json:"balance"`         // 当前账户余额（raw）
+		Link           string `json:"link"`            // 链接字段，send 为对方公钥；receive/open 为来源区块哈希
+		LinkAsAccount  string `json:"link_as_account"` // 链接字段解析为账户地址
+		Signature      string `json:"signature"`       // 区块签名，使用账户私钥签署
+		Work           string `json:"work"`            // 工作量证明，满足难度要求
+	} `json:"contents"`
+	Subtype string `json:"subtype"` // 区块子类型（send, receive, open, change, epoch）
+}

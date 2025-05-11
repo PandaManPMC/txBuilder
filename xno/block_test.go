@@ -377,3 +377,16 @@ func TestAccountsPending(t *testing.T) {
 	}
 	t.Log(bal)
 }
+
+func TestBlockInfo(t *testing.T) {
+	client := Client{
+		URL:        "https://node.somenano.com/proxy",
+		AuthHeader: "",
+		Ctx:        nil,
+	}
+	bal, err := client.BlockInfo("846E653DBEEDEF4F0DB145F55B1B149156EC047DEE208E3953780CCCAFAD9143")
+	if nil != err {
+		t.Fatal(err)
+	}
+	t.Log(bal)
+}
