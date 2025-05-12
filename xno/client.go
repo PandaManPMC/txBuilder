@@ -162,6 +162,9 @@ func (c *Client) AccountsPending(address string) (*AccountsPendingRsp, error) {
 	if e := json.Unmarshal(res, rsp); nil != e {
 		return nil, e
 	}
+	if e := rsp.ParseBlocks(); nil != e {
+		return nil, e
+	}
 	return rsp, nil
 }
 
