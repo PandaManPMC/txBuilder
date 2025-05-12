@@ -1,5 +1,7 @@
 package xno
 
+import "encoding/json"
+
 type WorkGenerateRsp struct {
 	Difficulty string `json:"difficulty"`
 	Multiplier string `json:"multiplier"`
@@ -43,10 +45,21 @@ type AccountBalanceRsp struct {
 
 type AccountsPendingRsp struct {
 	Deprecated        string              `json:"deprecated"`
-	Blocks            map[string][]string `json:"blocks"`
+	BlocksRaw         json.RawMessage     `json:"blocks"` // 延迟解析
 	RequestsLimit     string              `json:"requestsLimit"`
 	RequestsRemaining string              `json:"requestsRemaining"`
 	RequestLimitReset string              `json:"requestLimitReset"`
+	Blocks            map[string][]string `json:"-"` // 手动解析后放这里
+}
+
+func (that *AccountsPendingRsp) ParseBlocks() error {
+	// 如果是 ""，跳过
+	if string(that.BlocksRaw) == `""` {
+		that.Blocks = make(map[string][]string)
+		return nil
+	}
+	// 否则尝试解析成 map
+	return json.Unmarshal(that.BlocksRaw, &that.Blocks)
 }
 
 type BlockInfoRsp struct {
