@@ -148,11 +148,11 @@ func (c *Client) AccountBalance(address string) (*AccountBalanceRsp, error) {
 	return rsp, nil
 }
 
-func (c *Client) AccountsPending(address string) (*AccountsPendingRsp, error) {
+func (c *Client) AccountsPending(address, count string) (*AccountsPendingRsp, error) {
 	params := make(map[string]any)
 	params["action"] = "accounts_pending"
 	params["accounts"] = []string{address}
-	params["count"] = "10"
+	params["count"] = count
 	res, err := c.Send(params)
 	if nil != err {
 		return nil, err
