@@ -3,6 +3,7 @@ package xno
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/PandaManPMC/txBuilder/bip39hd"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -18,7 +19,7 @@ func TestDeriveKey(t *testing.T) {
 }
 
 func TestMnemonic(t *testing.T) {
-	mnemonic, err := GenerateMnemonicBy24()
+	mnemonic, err := bip39hd.GenerateMnemonicBy24()
 	require.Nil(t, err)
 	t.Log(mnemonic)
 
