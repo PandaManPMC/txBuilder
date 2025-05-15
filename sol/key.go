@@ -10,6 +10,14 @@ import (
 	"golang.org/x/crypto/ed25519"
 )
 
+func ValidSolanaAddress(addr string) bool {
+	decoded, err := base58.Decode(addr)
+	if err != nil {
+		return false
+	}
+	return len(decoded) == 32
+}
+
 func ImportWallet(mnemonic string, offsetPath int) (pk, address string, err error) {
 	seed := bip39.NewSeed(mnemonic, "")
 

@@ -60,3 +60,11 @@ func TestImportPrivateKeyFromHex(t *testing.T) {
 	signS := hex.EncodeToString(sign)
 	t.Log(signS)
 }
+
+func TestValidSolanaAddress(t *testing.T) {
+	t.Log(ValidSolanaAddress("D24AYSaV2Kw27aHQuKjrFJMjmYyzPy6xb7Q2sXqsWn7Q"))
+	t.Log(ValidSolanaAddress("D24AYSaV2Kw27aHQuKjrFJMjmYyzPy6xb7Q2sXqsWn71"))
+	t.Log(ValidSolanaAddress("D24AYSaV2Kw27aHQuKjrFJMjmYyzPy6xb7Q2sXqsWn7"))
+	t.Log(ValidSolanaAddress("D24AYSaV2Kw27aHQuKjrFJMjmYyzPy6xb7Q2sXqsWn776"))
+	t.Log(ValidSolanaAddress("D24AYSaV2Kw27aHQuKjrFJMjmYyzPy6xb7Q2sXqsWn7_"))
+}
