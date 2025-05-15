@@ -3,7 +3,7 @@ package sol
 import (
 	"crypto/ed25519"
 	"encoding/hex"
-	"github.com/mr-tron/base58"
+	"github.com/PandaManPMC/base58"
 	"testing"
 )
 

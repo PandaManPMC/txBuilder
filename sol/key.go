@@ -3,9 +3,9 @@ package sol
 import (
 	"encoding/hex"
 	"fmt"
+	"github.com/PandaManPMC/base58"
 	"github.com/PandaManPMC/txBuilder/xno/bip32"
 	"github.com/blocto/solana-go-sdk/common"
-	"github.com/mr-tron/base58"
 	"github.com/tyler-smith/go-bip39"
 	"golang.org/x/crypto/ed25519"
 )

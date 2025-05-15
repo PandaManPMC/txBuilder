@@ -3,13 +3,13 @@ package sol
 import (
 	"context"
 	"fmt"
+	"github.com/PandaManPMC/base58"
 	"github.com/blocto/solana-go-sdk/client"
 	"github.com/blocto/solana-go-sdk/common"
 	"github.com/blocto/solana-go-sdk/program/associated_token_account"
 	"github.com/blocto/solana-go-sdk/program/system"
 	"github.com/blocto/solana-go-sdk/program/token"
 	"github.com/blocto/solana-go-sdk/types"
-	"github.com/mr-tron/base58"
 	"log"
 	"testing"
 )
