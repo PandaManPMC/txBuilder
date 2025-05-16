@@ -36,6 +36,15 @@ func TestImportWallet(t *testing.T) {
 	}
 }
 
+func TestPrivateKeyStrToAddress(t *testing.T) {
+	privateKey := "341f58e5e65307ea627763a2d730deb6da5b95aca75ef5de2a4d916accd2dc3316b887a803bff07bcf4cd46281ba1cb6ada25fbf0419b3a9496cc20631ff058f"
+	addr, err := PrivateKeyStrToAddress(privateKey)
+	if nil != err {
+		t.Fatal(err)
+	}
+	t.Log(addr)
+}
+
 func TestImportPrivateKeyFromHex(t *testing.T) {
 	privateKey := "341f58e5e65307ea627763a2d730deb6da5b95aca75ef5de2a4d916accd2dc3316b887a803bff07bcf4cd46281ba1cb6ada25fbf0419b3a9496cc20631ff058f"
 	pk, err := ImportPrivateKeyFromHex(privateKey)

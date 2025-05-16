@@ -48,6 +48,22 @@ func ImportPrivateKeyFromHex(privateHex string) (ed25519.PrivateKey, error) {
 	return ed25519.PrivateKey(privateBytes), nil
 }
 
+func PrivateKeyToAddress(pk ed25519.PrivateKey) (string, error) {
+	pub := pk.Public().(ed25519.PublicKey)
+	address := base58.Encode(pub)
+	return address, nil
+}
+
+func PrivateKeyStrToAddress(privateHex string) (string, error) {
+	pk, err := ImportPrivateKeyFromHex(privateHex)
+	if nil != err {
+		return "", err
+	}
+	pub := pk.Public().(ed25519.PublicKey)
+	address := base58.Encode(pub)
+	return address, nil
+}
+
 // PrivateKeyHexToByteArray 私钥转为字节数组字符串，比如导入 Solflare 钱包就需要这个格式私钥
 func PrivateKeyHexToByteArray(privateHex string) (string, error) {
 	pk, err := ImportPrivateKeyFromHex(privateHex)
