@@ -1,4 +1,4 @@
-package tronWal
+package tron
 
 import (
 	"crypto/ecdsa"
