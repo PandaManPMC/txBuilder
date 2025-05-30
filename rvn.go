@@ -34,8 +34,7 @@ func RVNSignTxLegacyCompressed(txBuild *TransactionBuilder, privateBytes []byte)
 		if nil != err {
 			return "", "", err
 		}
-		vout := uint32(0)
-		redeemTx.AddTxIn(wire.NewTxIn(wire.NewOutPoint(txid, vout), nil))
+		redeemTx.AddTxIn(wire.NewTxIn(wire.NewOutPoint(txid, v.vOut), nil))
 	}
 
 	// 输出地址与金额

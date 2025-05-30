@@ -22,7 +22,7 @@ func TestBanMnemonic(t *testing.T) {
 	seed, err := NewBip39Seed(mnemonic, "")
 	require.Nil(t, err)
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 50; i++ {
 		key, err := DeriveBip39Key(seed, uint32(i))
 		require.Nil(t, err)
 

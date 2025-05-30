@@ -22,7 +22,7 @@ func TestImportWallet(t *testing.T) {
 	mnemonic := "fire mixture square town record horror save angle sad stage charge pencil puppy rich draw write pistol curve upper lunch outside quality fish grow"
 	t.Log(mnemonic)
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 6; i++ {
 		pk, addr, err := ImportWallet(mnemonic, i)
 		if nil != err {
 			t.Fatal(err)
