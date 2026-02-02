@@ -1,8 +1,6 @@
 module github.com/PandaManPMC/txBuilder
 
-go 1.23.2
-
-toolchain go1.24.12
+go 1.23.0
 
 require (
 	github.com/PandaManPMC/base58 v1.0.0
