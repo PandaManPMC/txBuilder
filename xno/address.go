@@ -3,6 +3,7 @@ package xno
 import (
 	"encoding/base32"
 	"errors"
+	"strings"
 
 	"golang.org/x/crypto/blake2b"
 )
@@ -71,4 +72,12 @@ func checksum(pubkey []byte) (checksum []byte, err error) {
 		checksum = append([]byte{b}, checksum...)
 	}
 	return
+}
+
+func IsXNOAddress(address string) bool {
+	if strings.HasPrefix(address, "ban_") {
+		return false
+	}
+	_, err := AddressToPubkey(address)
+	return nil == err
 }
